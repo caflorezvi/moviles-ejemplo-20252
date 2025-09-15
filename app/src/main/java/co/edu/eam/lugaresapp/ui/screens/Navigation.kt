@@ -5,6 +5,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import co.edu.eam.lugaresapp.ui.config.RouteScreen
+import co.edu.eam.lugaresapp.ui.screens.admin.HomeAdmin
+import co.edu.eam.lugaresapp.ui.screens.user.HomeUser
 
 @Composable
 fun Navigation() {
@@ -13,13 +15,13 @@ fun Navigation() {
 
     NavHost(
         navController = navController,
-        startDestination = RouteScreen.Login
+        startDestination = RouteScreen.HomeUser//RouteScreen.Login
     ){
 
         composable<RouteScreen.Login> {
             LoginScreen(
                 onNavigateToHome = {
-                    navController.navigate(RouteScreen.Home)
+                    navController.navigate(RouteScreen.HomeUser)
                 },
                 onNavigateToRegister = {
                     navController.navigate(RouteScreen.Register)
@@ -35,8 +37,12 @@ fun Navigation() {
             )
         }
 
-        composable<RouteScreen.Home> {
-            HomeScreen()
+        composable<RouteScreen.HomeUser> {
+            HomeUser()
+        }
+
+        composable<RouteScreen.HomeAdmin> {
+            HomeAdmin()
         }
 
     }
